@@ -1,28 +1,63 @@
+const express = require("express");
+const app = express();
+app.use(express.json());
 
-
+let students = [];
 
 //CREATE Student record -----------By <Crown Aluka>
 app.post("/api/students", (req, res) => {
-    const { name, email, age, course } = req.body ?? {};
-    const cleanEmail = email.trim().toLowerCase()
+  const { name, email, age, course } = req.body ?? {};
+  const cleanEmail = email.trim().toLowerCase();
 
-    if (!name?.trim() || !email?.trim() || !age || !course?.trim()) {
-        return res.status(400).json({ success: false, err: "Some fields are missing!" });
-    }
+  if (!name?.trim() || !email?.trim() || !age || !course?.trim()) {
+    return res
+      .status(400)
+      .json({ success: false, err: "Some fields are missing!" });
+  }
 
-    if (!Number.isInteger(age)) {
-        return res.status(400).json({ success: false, err: "Age must be number" });
-        
-    }
-    
-    if(students.some(stud => stud.email === cleanEmail)){
-        return res.status(400).json({ success: false, err: "Email taken" });
-        
-    }
+  if (!Number.isInteger(age)) {
+    return res.status(400).json({ success: false, err: "Age must be number" });
+  }
 
-        const newStudent = { id: students.length + 1, name, email:cleanEmail, age, course };
+  if (students.some((stud) => stud.email === cleanEmail)) {
+    return res.status(400).json({ success: false, err: "Email taken" });
+  }
 
-        students.push(newStudent);
+  const newStudent = {
+    id: students.length + 1,
+    name,
+    email: cleanEmail,
+    age,
+    course,
+  };
 
-        return res.status(201).json({ success: true, data: newStudent, message: `Student (${newStudent.id}) created successfully` });
-})
+  students.push(newStudent);
+
+  return res.status(201).json({
+    success: true,
+    data: newStudent,
+    message: `Student (${newStudent.id}) created successfully`,
+  });
+});
+
+//LISTING - By Eirene.
+app.get("/api/students", (req, res) => {
+  return res.status(200).json({
+    success: true,
+    count: students.length,
+    data: students,
+  });
+});
+
+app.get("/api/students/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const student = students.find((s) => s.id === id);
+
+  if (!student) {
+    return res.status(404).json({ success: false, err: "Student not found" });
+  }
+
+  return res.status(200).json({ sucess: true, data: student });
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
