@@ -64,6 +64,30 @@ app.get("/api/students/:id", (req, res) => {
   return res.status(200).json({ sucess: true, data: student });
 });
 
+// UPDATING(PUT) - By Jaiyeoba Michael.
+app.put("/api/students/:id",(req,res) => {
+  const studentid = Number(req.params.id);
+  const {name, email, age, course} = req.body;
+  if (!name || !email || !age || !course){
+    return res.status(404).json({message: "some field(s) are invalid. Please correct them and try again."})
+    }
+
+  const student = { id: studentid, name, email, age,course};
+  const index = students.findIndex(s => s.id === studentid);
+
+  if (index === -1) {
+    students.push(student);
+    return res.status(201).json({ message: 'Student created.', student });
+  }
+
+  students[index] = student;
+  res.status(200).json({ message: 'Student updated.', student });
+});
+ 
+
+
+
+
 
 
 
