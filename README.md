@@ -137,6 +137,12 @@ curl -X DELETE http://localhost:3000/api/students/1
 |------|-----------------------|
 | Umukoro David | Project setup, GitHub repo, merging of branches (Group Leader) |
 | Frank Aluka | Create Operation and Delete Operation |
+<<<<<<< HEAD
 | Peace Evi | View Operation |
 | Jaiyeoba Michael Olasunkanmi | Update Operation |
 | Iyiola Olayinka | Postman Collection and Testing |
+=======
+| Eirene | View Operation |
+| Jaiyeoba Michael Olasunkanmi | Update Operation |
+| Iyiola Olayinka  | Postman Collection and Testing |
+>>>>>>> ec1e30c1142346e2a3979e841b0bab931de0607c
