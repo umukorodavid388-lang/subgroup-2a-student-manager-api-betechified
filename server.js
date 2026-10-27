@@ -86,6 +86,7 @@ app.put("/api/students/:id",(req,res) => {
  
 
 
+
 app.delete("/api/students/:id", (req, res)=>{
     const studentId = Number(req.params.id);
     const student = students.find(stud => stud.id === studentId);
@@ -97,6 +98,8 @@ app.delete("/api/students/:id", (req, res)=>{
     students = students.filter(stud => stud.id !==studentId )
     return res.status(200).json({ success: true, message: `Student with (${studentId}) deleted successfully` });
 })
+
+
 
 
 
