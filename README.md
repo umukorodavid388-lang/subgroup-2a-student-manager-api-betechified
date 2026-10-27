@@ -136,7 +136,7 @@ curl -X DELETE http://localhost:3000/api/students/1
 | Name | Role / Responsibility |
 |------|-----------------------|
 | Umukoro David | Project setup, GitHub repo, merging of branches (Group Leader) |
-| Crown Aluka | Create Operation and Delete Operation |
+| Frank Aluka | Create Operation and Delete Operation |
 | Eirene | View Operation |
-| Mike | Update Operation |
-| Olayiminka Jewels | Postman Collection and Testing |
+| Jaiyeoba Michael Olasunkanmi | Update Operation |
+| Iyiola Olayinka  | Postman Collection and Testing |
