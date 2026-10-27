@@ -15,7 +15,7 @@ cd your-repo
 npm install
 
 # Start the server
-npm start
+npm run dev
 ```
 
 The API runs at `http://localhost:3000` by default.
