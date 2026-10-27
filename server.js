@@ -137,11 +137,18 @@ app.delete("/api/students/:id", (req, res) => {
     }
 
     students = students.filter(stud => stud.id !== studentId);
-    return res.status(200).json({ success: true, message: `Student with (${studentId}) deleted successfully` });
+    return res.status(200).json({ success: true, message: `Student with ID (${studentId}) deleted successfully` });
 })
 
 
-
+// ---------- Error handling ---------- by David Umukoro
+// Catches bad JSON in the request body so the reply stays JSON
+app.use((err, req, res, next) => {
+    if (err.type === "entity.parse.failed") {
+        return fail(res, 400, "Invalid JSON body");
+    }
+    return fail(res, 500, "Something went wrong on the server");
+});
 
 
 
