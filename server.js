@@ -6,7 +6,41 @@ const app = express();
 
 app.use(express.json());
 
-let students = [];
+let students = [
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "age": 20,
+        "course": "Computer Science"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "age": 22,
+        "course": "Mathematics"
+    },
+
+    {
+        "name": "Michael Johnson",
+        "email": "michael.johnson@example.com",
+        "age": 21,
+        "course": "Physics"
+    },
+
+    {
+        "name": "Emily Davis",
+        "email": "emily.davis@example.com",
+        "age": 23,
+        "course": "Chemistry"
+    },
+
+    {
+        "name": "David Wilson",
+        "email": "david.wilson@example.com",
+        "age": 24,
+        "course": "Biology"
+    },
+];
 let nextId = 1;
 
 
@@ -153,7 +187,7 @@ app.use((err, req, res, next) => {
 
 
 // SERVER
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`\n Server runing on http://localhost:${PORT}`);
 });
